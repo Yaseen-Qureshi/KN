@@ -96,6 +96,9 @@
         .yesOtherHeadacheMedication {
             display: none;
         }
+        .allMedications {
+            display: none;
+        }
     </style>
 
 </head>
@@ -773,13 +776,14 @@
             <br/>
             <h2>Has the patient ever taken or is currently taking any of the following preventive medications for headaches?"</h4>
 
-                <h4>The patient has never taken any medication for headaches?</h4>
+                <h4>Has the patient ever taken headache medication?</h4>
                 <label>
                     <input type="radio" required name="noHeadacheMedication" value="yes"> yes </label> &nbsp;&nbsp;&nbsp;
                 <label>
                     <input type="radio" required name="noHeadacheMedication" value="no"> no </label>
                 <br/>
                 <br/>
+                <div class="allMedications">
 
                 <h4>Has the patient taken Propranolol ?</h4>
                 <label>
@@ -1055,7 +1059,9 @@
                         <input type="radio" required name="otherHeadacheMedicationEffective" id="otherHeadacheMedicationEffectiveYes" value="yes"> yes </label> &nbsp;&nbsp;&nbsp;
                     <label>
                         <input type="radio" required name="otherHeadacheMedicationEffective" id="otherHeadacheMedicationEffectiveNo" value="no"> no </label>
-                </div>
+                </div> 
+            </div>
+
 
         </form>
 
@@ -1365,9 +1371,19 @@
                 }
             });
 
+            $("input:radio[name='noHeadacheMedication']").change(function () {
+                var radioVal = $(this).val();
+                if (radioVal == "yes") {
+                    $(".allMedications").show();
+                }
+                else {
+                    $(".allMedications").hide();
+                   
+                }
+            });
+
 
         });
-
     </script>
 
 </body>
